@@ -1,7 +1,15 @@
-export const ImageGalleryItem = ({image }) => {
+import PropTypes from 'prop-types';
+
+export const ImageGalleryItem = ({ image, alt, openModal }) => {
     return (
-        <li className="ImageGalleryItem">
-            <img className="ImageGalleryItem-image" src={image} alt={image} />
+        <li className="ImageGalleryItem" onClick={()=> openModal(image)}>
+            <img className="ImageGalleryItem-image" src={image} alt={alt} />
         </li>
     );  
+};
+
+ImageGalleryItem.propType = {
+    image: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    openModal: PropTypes.func.isRequired,
 };

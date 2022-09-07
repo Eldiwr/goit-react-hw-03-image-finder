@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from "react";
 
 export class Searchbar extends Component {
@@ -7,7 +8,7 @@ export class Searchbar extends Component {
     };
 
     handleInputForm = (event) => {
-        this.setState({name: event.currentTarget.value})
+        this.setState({ name: event.currentTarget.value });
     };
 
     formSubmit = (event) => {
@@ -41,3 +42,7 @@ export class Searchbar extends Component {
     };
 };
 
+Searchbar.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
+}
