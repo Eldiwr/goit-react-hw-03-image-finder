@@ -82,22 +82,21 @@ export class ImageGallery extends Component {
 
         if (status === 'resolved') {
             return (
-                <div>
-                    <ul className="ImageGallery">
-                        
+                <>               
+                <ul className="ImageGallery">        
                     {images.map((image) => {
                         return <ImageGalleryItem key={image.id} image={image.webformatURL} alt={image.tag} openModal={this.openModal} />
                     })}
-                    </ul>  
+                </ul>  
                     
-                    <Button onClick={this.loadMore} />
+                <Button onClick={this.loadMore} />
 
-                    {showModal && (
-                        <Modal toggleModal={this.toggleModal}>
-                            <img src={modalImage.largeImageURL} alt={modalImage.tags} />
-                        </Modal>
-                    )}                       
-                </div>               
+                {showModal && (
+                    <Modal toggleModal={this.toggleModal}>
+                        <img src={modalImage.largeImageURL} alt={modalImage.tags} />
+                    </Modal>
+                )}                                          
+                </>              
                 );    
             };     
         };  
