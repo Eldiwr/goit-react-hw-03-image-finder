@@ -3,6 +3,10 @@ import { Component } from "react";
 
 export class Modal extends Component {
 
+    static PropType = {
+        onClick: PropTypes.func.isRequired
+    };
+
     componentDidMount() {
         window.addEventListener('keydown', this.onClose);
     };
@@ -28,8 +32,4 @@ export class Modal extends Component {
             </div>
         );
     };
-};
-
-Modal.propTypes = {
-    onClick: PropTypes.func,
 };
