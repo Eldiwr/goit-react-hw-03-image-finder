@@ -16,7 +16,7 @@ export const ImageGallery = ({status, images, openModal, loadMore}) => {
             <>               
                 <ul className="ImageGallery">        
                     {images.map((image) => {
-                        return <ImageGalleryItem key={image.id} image={image.webformatURL} alt={image.tag} openModal={openModal}/>
+                        return <ImageGalleryItem key={image.id} image={image.webformatURL} alt={image.tags} openModal={openModal}/>
                     })}
                 </ul>         
                 <Button onClick={loadMore} />                                          

@@ -16,6 +16,7 @@ export class App extends Component {
     status: 'idle',
     showModal: false,
     modalImage: [],
+    tag: [],
   };
 
   handleFormSubmit = (value) => {
@@ -67,10 +68,13 @@ export class App extends Component {
       this.setState({ showModal: !this.state.showModal })
   };
             
-  openModal = (image) => {
+  openModal = (image, tag) => {
       const modalImg = this.state.images.filter(e => {return e.webformatURL === image});
 
-      this.setState({ modalImage: modalImg[0] });
+    this.setState({
+      modalImage: modalImg[0],
+      tag: tag,
+    });
 
       this.toggleModal();        
   };
