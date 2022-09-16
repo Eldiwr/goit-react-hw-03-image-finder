@@ -28,15 +28,21 @@ export class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-
-    const { imageName, page, images } = this.state;
-    
+    const { imageName, page } = this.state;
 
     if (prevState.imageName !== imageName) {
+        this.setState({status: 'pending'});
+      }
+    
+    if (prevState.page !== page || prevState.imageName !== imageName) {
+      this.apiFetchImages();   
+    };
+  };
+  
+  apiFetchImages = () => {
+    const { imageName, page, images } = this.state;
 
-        this.setState({ status: 'pending'});
-            
-        imagesApi.fetchImages(imageName, page).then(response => {
+    imagesApi.fetchImages(imageName, page).then(response => {
             if (response.totalHits === 0) {
                 this.setState({ status: 'empty' });
             } else {
@@ -47,16 +53,7 @@ export class App extends Component {
                 });
             };   
         });
-    };
-
-    if (prevState.page !== page) {
-        
-      imagesApi.fetchImages(imageName, page).then(response => {
-        this.setState({images: this.state.images.concat(response.hits)})
-      })
-    };
   };
-  
 
   loadMore = () => {
       this.setState((prevState) => ({
